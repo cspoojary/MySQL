@@ -19,3 +19,32 @@ BEGIN
 
 INSERT INTO parks_and_recreation.employee_salary (employee_id, first_name, last_name, occupation, salary, dept_id)
 VALUES(13, 'Chaithanya','Poojary', 'Data Analyst', 1000000,NULL);
+
+-- EVENTS
+
+SELECT * 
+FROM parks_and_recreation.employee_demographics;
+
+DELIMITER $$
+CREATE EVENT parks_and_recreation.delete_retirees
+ON SCHEDULE EVERY 30 second
+DO 
+BEGIN
+	DELETE 
+	FROM parks_and_recreation.employee_demographics
+	WHERE age >= 60;
+END $$
+DELIMITER ;
+
+SHOW VARIABLES LIKE 'event%';
+
+
+
+
+
+
+
+
+
+
+
